@@ -12,8 +12,8 @@
 char auth[] = "FhyFOzCjztiBuopmhh4WLCXDOkfoQZu9";                           //this is the authentication token you get on the Blynk App, in the Project Settings (nut icon)
 
 
-char ssid[] = "********";                                                  //these are you wifi name and password, fill your own wifi and pass in
-char pass[] = "*********";
+char ssid[] = "**********";                                                  //these are you wifi name and password, fill your own wifi and pass in
+char pass[] = "**********";
 
 const int DHTPIN = 22;                                                      //these lines define what pin you use for your DHT and setup the DHT
 DHT dht(DHTPIN, DHTTYPE);
@@ -70,10 +70,11 @@ void UpdateSensors() {
     doorState[i] = digitalRead(DOOR_SENSOR_PIN[i]);  // read state
     if (doorState[i] == HIGH) {
 //      Serial.println("The door is open");
-      Blynk.virtualWrite(i, 1023);
+    
+      Blynk.virtualWrite(i+8, 1023);
     } else {
 //      Serial.println("The door is closed");
-      Blynk.virtualWrite(i, 0);
+      Blynk.virtualWrite(i+8, 0);
     }
   }
 }
@@ -82,6 +83,6 @@ void UpdateSensors() {
 void UpdateDHT11() {
   float temperature = dht.readTemperature();  // Read temperature in Celsius
   float humidity = dht.readHumidity();        // Read humidity
-  Blynk.virtualWrite(V3, temperature);
-  Blynk.virtualWrite(V4, humidity);
+  Blynk.virtualWrite(V30, temperature);
+  Blynk.virtualWrite(V31, humidity);
 }
