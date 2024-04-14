@@ -78,3 +78,6 @@ The use of a breadboard was found to be cluttered. For future projects, transiti
 When placing the contact sensors, it is important to ensure that they do not hinder the operation of the gate. If the gate does not fully close, the sensor position needs to be adjusted. Additionally, maintaining a suitable distance between the sensors is essential to prevent false negative values.
 
 Furthermore, the reliance on the Blynk app from a third party posed a limitation. Therefore, a transition was made to a home-assistant application, utilizing YAML configuration files. This alternative approach enables self-hosting of the project, thereby increasing autonomy and reducing dependency on external platforms. Details of this project adjustment are described in a separate GitHub repository.
+
+
+video link: https://youtu.be/CYpu3tzOmjI
