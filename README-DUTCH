@@ -73,3 +73,33 @@ Het gebruik van een breadboard bleek onoverzichtelijk. Voor toekomstige projecte
 Bij het plaatsen van de contactsensoren is het van belang ervoor te zorgen dat ze de werking van de poort niet hinderen. Als de poort niet volledig sluit, moet de positie van de sensor worden aangepast. Daarnaast is het essentieel om een geschikte afstand tussen de sensoren te handhaven om valse negatieve waarden te voorkomen.
 
 Verder bleek de afhankelijkheid van de Blynk-app van een derde partij een beperking. Daarom werd overgestapt naar een homeassistant-applicatie, waarbij gebruik wordt gemaakt van YAML-configuratiebestanden. Deze alternatieve aanpak maakt zelfhosting van het project mogelijk, waardoor de autonomie wordt vergroot en de afhankelijkheid van externe platforms wordt verminderd. Details van deze projectaanpassing worden beschreven in een apart GitHub-repository.
+
+
+
+
+Uitleg code:
+1. Introductie
+Deze code implementeert een IoT (Internet of Things) systeem dat verschillende sensoren over het internet verbindt en hun status en metingen visualiseert via de Blynk-applicatie. Het systeem omvat het gebruik van een ESP32 microcontroller, DHT11 temperatuur- en vochtigheidssensoren, en de integratie van de Blynk service voor het monitoren en bedienen op afstand.
+
+2. Bibliotheekinclusies en Definities
+De code begint met het definiëren van de BLYNK_PRINT, BLYNK_TEMPLATE_ID, en BLYNK_TEMPLATE_NAME voor de Blynk-app. Vervolgens worden de vereiste bibliotheken ingesloten voor WiFi-connectiviteit, het beheer van de Blynk-communicatie en de bediening van de DHT11-sensor. Bovendien wordt het type sensor gedefinieerd als DHT11.
+
+3. Initialisatie
+De Wi-Fi inloggegevens en de Blynk authenticatie token worden ingesteld, evenals de pinnen voor de DHT-sensor, de transistors en de deursensoren. Daarna worden de verbinding met het Wi-Fi-netwerk en de Blynk-server tot stand gebracht.
+
+4. Hoofdprogramma
+Setup()
+In de setup functie worden de pinnen geïnitialiseerd, de seriële communicatie gestart voor debuggen, de WiFi-verbinding opgezet en de Blynk-verbinding tot stand gebracht.
+
+Loop()
+De loop functie roept continu de Blynk.run() functie op om de communicatie met de Blynk-server te onderhouden, en de UpdateSensors() en UpdateDHT11() functies om de status van de deursensoren en de metingen van de DHT11-sensor bij te werken.
+
+5. Hulpprogrammafuncties
+initializePins()
+Deze functie initialiseert de pinnen voor de transistors als uitgangen en de deursensoren als invoer met pull-up weerstanden.
+
+UpdateSensors()
+De UpdateSensors() functie leest de status van de deursensoren en rapporteert deze aan de Blynk-app. Als een deur open is, wordt een hoge logische waarde gerapporteerd, anders wordt een lage logische waarde gerapporteerd.
+
+UpdateDHT11()
+De UpdateDHT11() functie leest de temperatuur en vochtigheid van de DHT11-sensor en stuurt deze waarden naar de Blynk-app op respectievelijke virtuele pinnen.
