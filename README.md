@@ -80,4 +80,35 @@ When placing the contact sensors, it is important to ensure that they do not hin
 Furthermore, the reliance on the Blynk app from a third party posed a limitation. Therefore, a transition was made to a home-assistant application, utilizing YAML configuration files. This alternative approach enables self-hosting of the project, thereby increasing autonomy and reducing dependency on external platforms. Details of this project adjustment are described in a separate GitHub repository.
 
 
+code explained:
+1. Introduction
+This code implements an IoT (Internet of Things) system that connects various sensors over the internet and visualizes their status and readings through the Blynk application. The system includes the use of an ESP32 microcontroller, DHT11 temperature and humidity sensors, and integration with the Blynk service for remote monitoring and control.
+
+2. Library Inclusions and Definitions
+The code begins by defining the BLYNK_PRINT, BLYNK_TEMPLATE_ID, and BLYNK_TEMPLATE_NAME for the Blynk app. Subsequently, the required libraries are included for WiFi connectivity, managing Blynk communication, and controlling the DHT11 sensor. Additionally, the sensor type is defined as DHT11.
+
+3. Initialization
+The Wi-Fi credentials and Blynk authentication token are set, along with the pins for the DHT sensor, transistors, and door sensors. Then, the connection to the Wi-Fi network and Blynk server is established.
+
+4. Main Program
+Setup()
+In the setup function, the pins are initialized, serial communication is started for debugging, the WiFi connection is set up, and the Blynk connection is established.
+
+Loop()
+The loop function continuously calls the Blynk.run() function to maintain communication with the Blynk server, and the UpdateSensors() and UpdateDHT11() functions to update the status of the door sensors and the readings from the DHT11 sensor.
+
+5. Utility Functions
+initializePins()
+This function initializes the pins for the transistors as outputs and the door sensors as inputs with pull-up resistors.
+
+UpdateSensors()
+The UpdateSensors() function reads the status of the door sensors and reports them to the Blynk app. If a door is open, a high logic value is reported, otherwise a low logic value is reported.
+
+UpdateDHT11()
+The UpdateDHT11() function reads the temperature and humidity from the DHT11 sensor and sends these values to the Blynk app on respective virtual pins.
+
+6. Conclusion
+This code demonstrates an effective implementation of an IoT system using ESP32, Blynk, and DHT11 sensors. It provides real-time monitoring and control of door statuses and environmental parameters through the Blynk application, which is useful for various applications such as home automation, climate control, and security systems.
+
+
 video link: https://youtu.be/CYpu3tzOmjI
