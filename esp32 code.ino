@@ -12,8 +12,8 @@
 char auth[] = "FhyFOzCjztiBuopmhh4WLCXDOkfoQZu9";                           //this is the authentication token you get on the Blynk App, in the Project Settings (nut icon)
 
 
-char ssid[] = "ANDESWLAN";                                                  //these are you wifi name and password, fill your own wifi and pass in
-char pass[] = "pachernasimas";
+char ssid[] = "********";                                                  //these are you wifi name and password, fill your own wifi and pass in
+char pass[] = "*********";
 
 const int DHTPIN = 22;                                                      //these lines define what pin you use for your DHT and setup the DHT
 DHT dht(DHTPIN, DHTTYPE);
